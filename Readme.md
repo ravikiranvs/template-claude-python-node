@@ -4,7 +4,7 @@ A ready-to-use devcontainer for AI-assisted development with Claude Code, Playwr
 
 ## What's included
 
-- **Ubuntu devcontainer** with Node 22, ripgrep, jq, tree, and the GitHub CLI
+- **Ubuntu devcontainer** with Node 22, Python 3.12, ripgrep, jq, tree, and the GitHub CLI
 - **Claude Code** pre-installed and configured
 - **`playwright-cli`** for token-efficient browser automation with AI agents
 - **Claude Code skills** from [mattpocock/skills](https://github.com/mattpocock/skills): `setup-matt-pocock-skills`, `grill-with-docs`, `to-prd`, `to-issues`, `tdd`

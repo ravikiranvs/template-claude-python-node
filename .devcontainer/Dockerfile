@@ -1,5 +1,5 @@
 # Base image – Microsoft's base devcontainer image (git, curl, zsh, vscode user).
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 # ── System packages ───────────────────────────────────────────────────────────
 RUN apt-get update && apt-get install -y --no-install-recommends \
