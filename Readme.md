@@ -79,6 +79,8 @@ Once the container is ready, open Claude Code and run:
 
 This configures the engineering skills for your repo — issue tracker, triage labels, and domain doc layout. Run it once per repo. All other skills depend on it.
 
+Then open `CLAUDE.md` and follow the instructions in the `## Autonomous issue loop` section — uncomment the block that matches your issue tracker (GitHub or local markdown) and delete the other.
+
 ---
 
 ## Workflow
@@ -88,9 +90,25 @@ Use these slash commands in Claude Code for a structured feature development loo
 | Step | Command | What it does |
 |---|---|---|
 | 1 | `/grill-with-docs` | Stress-tests your plan against the existing domain model and docs |
-| 2 | `/to-prd` | Synthesizes the conversation into a PRD, filed as a GitHub issue |
-| 3 | `/to-issues` | Breaks the PRD into vertical-slice GitHub issues |
-| 4 | `/tdd` | Implements each issue with red-green-refactor, one slice at a time |
+| 2 | `/to-prd` | Synthesizes the conversation into a PRD, filed as a GitHub issue or markdown file |
+| 3 | `/to-issues` | Breaks the PRD into vertical-slice issues (HITL and AFK) |
+| 4 | `/goal` | Autonomous loop — works through issues one by one until all are done |
+
+### Autonomous issue loop
+
+After `/to-issues`, run `/goal` with the condition that matches your issue tracker:
+
+**GitHub issues:**
+```
+/goal `gh issue list --label afk --state open` returns empty and all tests pass
+```
+
+**Local markdown issues:**
+```
+/goal all markdown files in .scratch/issues/ have status: done and all tests pass
+```
+
+Claude will pick up each open issue, implement it using `/tdd`, close it, and move to the next — without you prompting each step.
 
 ---
 
@@ -100,7 +118,7 @@ Use these slash commands in Claude Code for a structured feature development loo
 your-repo/
 ├── .devcontainer/
 │   ├── devcontainer.json       # Container config, mounts, extensions
-│   ├── Dockerfile              # Ubuntu + Node 22 + gh + playwright-cli
+│   ├── Dockerfile              # Ubuntu 24.04 + Node 22 + Python 3.12 + gh + playwright-cli
 │   └── postCreateCommand.sh    # Runs once after container is created
 └── CLAUDE.md                   # Project instructions read by Claude Code
 ```

@@ -75,3 +75,30 @@ Run the skill name as a slash command in Claude Code, e.g. `/grill-with-docs`.
 - Commit frequently with descriptive messages after each green test
 
 ---
+
+## Autonomous issue loop
+
+<!-- Fill this in after running /setup-matt-pocock-skills -->
+<!-- It will tell you whether issues live in GitHub or .scratch/issues/ -->
+<!-- Then uncomment the block that matches your setup -->
+
+<!-- GitHub issues:
+When running /goal targeting the issue backlog, follow this loop exactly:
+1. Run `gh issue list --label afk --state open` to find the next open issue
+2. Read the issue body in full
+3. Use /tdd to implement it as a vertical slice
+4. Run tests — only proceed if they pass
+5. Close the issue with `gh issue close [number]` and a summary
+6. Repeat until `gh issue list --label afk --state open` is empty
+-->
+
+<!-- Local markdown issues:
+When running /goal targeting the issue backlog, follow this loop exactly:
+1. List markdown files in .scratch/issues/ without status: done
+2. Pick the first by filename order
+3. Read the issue file in full
+4. Use /tdd to implement it as a vertical slice
+5. Run tests — only proceed if they pass
+6. Set status: done in the file and add a summary
+7. Repeat until no open files remain
+-->
